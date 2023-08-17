@@ -39,4 +39,4 @@ jobs:
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
     - name: Update kube config
-      run: docker run -d -p 8080:8088 $REPOSITORY:$IMAGE_TAG
+      run: docker run -d -p 80:8088 $REPOSITORY:$IMAGE_TAG
