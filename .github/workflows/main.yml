@@ -39,4 +39,8 @@ jobs:
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
     - name: Update kube config
+      env:
+        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        REPOSITORY: devops-img
+        IMAGE_TAG: latest
       run: docker run -dit $REGISTRY/$REPOSITORY:$IMAGE_TAG
