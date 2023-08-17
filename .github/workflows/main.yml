@@ -38,9 +38,11 @@ jobs:
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
-    - name: Update kube config
+    - name: Run a container using the new image
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         REPOSITORY: devops-img
         IMAGE_TAG: latest
       run: docker run -dit $REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+#all these happens in the git temp env 
